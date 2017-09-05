@@ -14,6 +14,8 @@
 
 @protocol SJScrollEntriesViewDelegate;
 
+
+
 @interface SJScrollEntriesView : UIView
 
 @property (nonatomic, strong, readwrite) NSArray<id<SJScrollEntriesViewUserProtocol>> *items;
@@ -27,6 +29,9 @@
 @property (nonatomic, strong, readonly) UIScrollView *scrollView;
 
 @end
+
+
+
 
 @protocol SJScrollEntriesViewDelegate <NSObject>
 
