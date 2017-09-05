@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
 s.name         = 'SJScrollEntriesView'
-s.version      = '0.0.1'
+s.version      = '1.0.0'
 s.summary      = 'scrollEntriesView.'
 s.description  = 'https://github.com/changsanjiang/SJScrollEntriesView/blob/master/README.md'
 s.homepage     = 'https://github.com/changsanjiang/SJScrollEntriesView'
