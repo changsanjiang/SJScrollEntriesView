@@ -12,6 +12,21 @@
 
 #import "SampleModel.h"
 
+
+@interface ViewController (SJScrollEntriesViewDelegateMethods)<SJScrollEntriesViewDelegate>
+
+@end
+
+
+@implementation ViewController (SJScrollEntriesViewDelegateMethods)
+
+- (void)scrollEntriesView:(SJScrollEntriesView *)view currentIndex:(NSInteger)currentIndex beforeIndex:(NSInteger)beforeIndex {
+    NSLog(@"currentIndex : %zd - beforeIndex : %zd", currentIndex, beforeIndex);
+}
+
+@end
+
+
 @interface ViewController ()
 
 @property (nonatomic, strong, readwrite) SJScrollEntriesView *scrollEntriesView;
@@ -25,15 +40,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor blackColor];
+    
     _scrollEntriesView = [SJScrollEntriesView new];
     
     _scrollEntriesView.frame = CGRectMake(0, 200, [UIScreen mainScreen].bounds.size.width, 44);
     
-    _scrollEntriesView.backgroundColor = [UIColor blackColor];
+    _scrollEntriesView.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:_scrollEntriesView];
     
-    
+    _scrollEntriesView.delegate = self;
     
     
 #pragma mark - Items

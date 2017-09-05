@@ -12,18 +12,19 @@
 
 @interface SJScrollEntriesView ()
 
-@property (nonatomic, strong) UIScrollView *scrollView;
-
 @property (nonatomic, strong, readwrite) NSArray<UIButton *> *itemArr;
 
 @property (nonatomic, strong, readwrite) SJScrollEntriesViewSettings *settings;
 
 @property (nonatomic, strong, readonly) UIView *lineView;
 
+@property (nonatomic, assign, readwrite) NSInteger beforeIndex;
+
 @end
 
 @implementation SJScrollEntriesView
 
+@synthesize scrollView = _scrollView;
 @synthesize lineView = _lineView;
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -31,6 +32,13 @@
     if ( !self ) return nil;
     [self _setupView];
     return self;
+}
+
+- (void)changeIndex:(NSInteger)index {
+    if ( _items.count == 0 ) return;
+    if ( index > self.itemArr.count ) return;
+    if ( index < 0 ) return;
+    [self clickedBtn:self.itemArr[index]];
 }
 
 - (void)settings:(void (^)(SJScrollEntriesViewSettings *))block {
@@ -71,6 +79,10 @@
     if ( offsetX > _scrollView.contentSize.width - CGRectGetWidth(self.frame) ) offsetX = _scrollView.contentSize.width - CGRectGetWidth(self.frame);
     if ( offsetX < 0 ) offsetX = 0;
     [self.scrollView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
+    if ( [self.delegate respondsToSelector:@selector(scrollEntriesView:currentIndex:beforeIndex:)] ) {
+        [self.delegate scrollEntriesView:self currentIndex:btn.tag beforeIndex:self.beforeIndex];
+    }
+    self.beforeIndex = btn.tag;
 }
 
 // MARK: Private
@@ -83,7 +95,7 @@
     __block CGFloat summation = 0.0;
     [items enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [_scrollView addSubview:obj];
-        float width = [self sizeFortitle:self.items[idx].title size:CGSizeMake(100, 50)].width + 16;
+        float width = [self sizeFortitle:self.items[idx].title size:CGSizeMake(100, 50)].width + 32;
         summation += width;
         if ( idx == 0 ) {
             [obj mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -158,11 +170,9 @@
 
 - (void)_setupView {
     [self addSubview:self.scrollView];
-    self.scrollView.backgroundColor = [UIColor redColor];
     self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_scrollView]|" options:NSLayoutFormatAlignAllLeading metrics:nil views:NSDictionaryOfVariableBindings(_scrollView)]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_scrollView]|" options:NSLayoutFormatAlignAllTop metrics:nil views:NSDictionaryOfVariableBindings(_scrollView)]];
-    
     [self addSubview:self.lineView];
 }
 
@@ -178,7 +188,7 @@
 - (UIView *)lineView {
     if ( _lineView ) return _lineView;
     _lineView = [UIView new];
-    _lineView.backgroundColor = [UIColor whiteColor];
+    _lineView.backgroundColor = [UIColor blackColor];
     return _lineView;
 }
 

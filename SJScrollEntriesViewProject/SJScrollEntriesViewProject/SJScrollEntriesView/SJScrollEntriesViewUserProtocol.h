@@ -11,6 +11,5 @@
 @protocol SJScrollEntriesViewUserProtocol <NSObject>
 
 @property (nonatomic, strong, readonly) NSString *title;
-@property (nonatomic, assign, readwrite) BOOL isSelected;
 
 @end
