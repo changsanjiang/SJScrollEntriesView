@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		77BED2AD1F5D7E750024D879 /* SampleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BED2AC1F5D7E750024D879 /* SampleModel.m */; };
+		77BED2B31F5E511E0024D879 /* SJScrollEntriesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BED2B11F5E511E0024D879 /* SJScrollEntriesView.m */; };
 		77F1E7A81F5D3E9000F26836 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F1E7A71F5D3E9000F26836 /* main.m */; };
 		77F1E7AB1F5D3E9000F26836 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F1E7AA1F5D3E9000F26836 /* AppDelegate.m */; };
 		77F1E7AE1F5D3E9000F26836 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F1E7AD1F5D3E9000F26836 /* ViewController.m */; };
 		77F1E7B11F5D3E9000F26836 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77F1E7AF1F5D3E9000F26836 /* Main.storyboard */; };
 		77F1E7B31F5D3E9000F26836 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77F1E7B21F5D3E9000F26836 /* Assets.xcassets */; };
 		77F1E7B61F5D3E9000F26836 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77F1E7B41F5D3E9000F26836 /* LaunchScreen.storyboard */; };
-		77F1E7C01F5D3EAF00F26836 /* SJScrollEntriesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F1E7BF1F5D3EAF00F26836 /* SJScrollEntriesView.m */; };
 		B0FFA363F882462B7F50E2D0 /* libPods-SJScrollEntriesViewProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A86C180D940927FAAC9F8AD /* libPods-SJScrollEntriesViewProject.a */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +24,9 @@
 		403411FD76CAC0DDB6C8BA27 /* Pods-SJScrollEntriesViewProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SJScrollEntriesViewProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SJScrollEntriesViewProject/Pods-SJScrollEntriesViewProject.debug.xcconfig"; sourceTree = "<group>"; };
 		77BED2AB1F5D7E750024D879 /* SampleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleModel.h; sourceTree = "<group>"; };
 		77BED2AC1F5D7E750024D879 /* SampleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleModel.m; sourceTree = "<group>"; };
-		77BED2AE1F5D7EB70024D879 /* SJScrollEntriesViewUserProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJScrollEntriesViewUserProtocol.h; sourceTree = "<group>"; };
+		77BED2B01F5E511E0024D879 /* SJScrollEntriesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJScrollEntriesView.h; sourceTree = "<group>"; };
+		77BED2B11F5E511E0024D879 /* SJScrollEntriesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJScrollEntriesView.m; sourceTree = "<group>"; };
+		77BED2B21F5E511E0024D879 /* SJScrollEntriesViewUserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJScrollEntriesViewUserProtocol.h; sourceTree = "<group>"; };
 		77F1E7A31F5D3E9000F26836 /* SJScrollEntriesViewProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SJScrollEntriesViewProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77F1E7A71F5D3E9000F26836 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		77F1E7A91F5D3E9000F26836 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -35,8 +37,6 @@
 		77F1E7B21F5D3E9000F26836 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77F1E7B51F5D3E9000F26836 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77F1E7B71F5D3E9000F26836 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		77F1E7BE1F5D3EAF00F26836 /* SJScrollEntriesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJScrollEntriesView.h; sourceTree = "<group>"; };
-		77F1E7BF1F5D3EAF00F26836 /* SJScrollEntriesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJScrollEntriesView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +68,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		77BED2AF1F5E511E0024D879 /* SJScrollEntriesView */ = {
+			isa = PBXGroup;
+			children = (
+				77BED2B01F5E511E0024D879 /* SJScrollEntriesView.h */,
+				77BED2B11F5E511E0024D879 /* SJScrollEntriesView.m */,
+				77BED2B21F5E511E0024D879 /* SJScrollEntriesViewUserProtocol.h */,
+			);
+			path = SJScrollEntriesView;
+			sourceTree = "<group>";
+		};
 		77F1E79A1F5D3E9000F26836 = {
 			isa = PBXGroup;
 			children = (
@@ -95,7 +105,7 @@
 				77F1E7AD1F5D3E9000F26836 /* ViewController.m */,
 				77BED2AB1F5D7E750024D879 /* SampleModel.h */,
 				77BED2AC1F5D7E750024D879 /* SampleModel.m */,
-				77F1E7BD1F5D3E9800F26836 /* SJScrollEntriesView */,
+				77BED2AF1F5E511E0024D879 /* SJScrollEntriesView */,
 				77F1E7AF1F5D3E9000F26836 /* Main.storyboard */,
 				77F1E7B21F5D3E9000F26836 /* Assets.xcassets */,
 				77F1E7B41F5D3E9000F26836 /* LaunchScreen.storyboard */,
@@ -111,16 +121,6 @@
 				77F1E7A71F5D3E9000F26836 /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		77F1E7BD1F5D3E9800F26836 /* SJScrollEntriesView */ = {
-			isa = PBXGroup;
-			children = (
-				77F1E7BE1F5D3EAF00F26836 /* SJScrollEntriesView.h */,
-				77F1E7BF1F5D3EAF00F26836 /* SJScrollEntriesView.m */,
-				77BED2AE1F5D7EB70024D879 /* SJScrollEntriesViewUserProtocol.h */,
-			);
-			path = SJScrollEntriesView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,9 +248,9 @@
 			files = (
 				77BED2AD1F5D7E750024D879 /* SampleModel.m in Sources */,
 				77F1E7AE1F5D3E9000F26836 /* ViewController.m in Sources */,
-				77F1E7C01F5D3EAF00F26836 /* SJScrollEntriesView.m in Sources */,
 				77F1E7AB1F5D3E9000F26836 /* AppDelegate.m in Sources */,
 				77F1E7A81F5D3E9000F26836 /* main.m in Sources */,
+				77BED2B31F5E511E0024D879 /* SJScrollEntriesView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
