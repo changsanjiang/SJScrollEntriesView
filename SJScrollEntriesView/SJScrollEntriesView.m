@@ -88,7 +88,25 @@
     
     self.itemArr[self.beforeIndex].selected = NO;
     btn.selected = YES;
+    
+    [self beforeBtnAnima:self.itemArr[self.beforeIndex]];
+    [self currentBtnAnima:btn];
+    
     self.beforeIndex = btn.tag;
+}
+
+- (void)beforeBtnAnima:(UIButton *)btn {
+    btn.titleLabel.font = [UIFont systemFontOfSize:self.settings.fontSize];
+    [UIView animateWithDuration:0.25 animations:^{
+        btn.transform = CGAffineTransformIdentity;
+    }];
+}
+
+- (void)currentBtnAnima:(UIButton *)btn {
+    btn.titleLabel.font = [UIFont boldSystemFontOfSize:self.settings.fontSize];
+    [UIView animateWithDuration:0.25 animations:^{
+        btn.transform = CGAffineTransformMakeScale(1.3, 1.3);
+    }];
 }
 
 // MARK: Private

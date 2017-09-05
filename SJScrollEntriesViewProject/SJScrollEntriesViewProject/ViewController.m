@@ -12,6 +12,8 @@
 
 #import "SampleModel.h"
 
+#import <Masonry.h>
+
 
 @interface ViewController (SJScrollEntriesViewDelegateMethods)<SJScrollEntriesViewDelegate>
 
@@ -44,11 +46,15 @@
     
     _scrollEntriesView = [[SJScrollEntriesView alloc] initWithSettings:nil];
     
-    _scrollEntriesView.frame = CGRectMake(0, 200, [UIScreen mainScreen].bounds.size.width, 44);
-    
     _scrollEntriesView.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:_scrollEntriesView];
+    
+    [_scrollEntriesView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.trailing.offset(0);
+        make.height.offset(44);
+        make.center.offset(0);
+    }];
     
     _scrollEntriesView.delegate = self;
     
