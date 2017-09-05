@@ -42,7 +42,7 @@
     
     self.view.backgroundColor = [UIColor blackColor];
     
-    _scrollEntriesView = [SJScrollEntriesView new];
+    _scrollEntriesView = [[SJScrollEntriesView alloc] initWithSettings:nil];
     
     _scrollEntriesView.frame = CGRectMake(0, 200, [UIScreen mainScreen].bounds.size.width, 44);
     

@@ -28,9 +28,20 @@
 @synthesize scrollView = _scrollView;
 @synthesize lineView = _lineView;
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
+- (instancetype)initWithSettings:(SJScrollEntriesViewSettings *)settings {
+    self = [super initWithFrame:CGRectZero];
     if ( !self ) return nil;
+    if ( settings == nil ) {
+        settings = [SJScrollEntriesViewSettings new];
+        settings.fontSize = 14;
+        settings.selectedColor = [UIColor redColor];
+        settings.normalColor = [UIColor blackColor];
+        settings.lineColor = [UIColor redColor];
+        settings.lineHeight = 2;
+        settings.itemSpacing = 32;
+        settings.lineScale = 0.382;
+    }
+    self.settings = settings;
     [self _setupView];
     return self;
 }
@@ -42,15 +53,6 @@
     [self clickedBtn:self.itemArr[index]];
 }
 
-- (void)settings:(void (^)(SJScrollEntriesViewSettings *))block {
-    _settings = [SJScrollEntriesViewSettings new];
-    if ( block ) block(_settings);
-    if ( _settings.lineColor ) {}
-    if ( _settings.normalColor ) {}
-    if ( _settings.selectedColor ) {}
-    if ( _settings.fontSize ) {}
-}
-
 - (void)setItems:(NSArray<id<SJScrollEntriesViewUserProtocol>> *)items {
     _items = items;
     
@@ -58,7 +60,7 @@
     
     _itemArr = [self _createitems];
     
-    [self _addSuviewToScrollView:_itemArr];
+    [self _addSubviewToScrollView:_itemArr];
 }
 
 // MARK: Actions
@@ -66,9 +68,9 @@
 - (void)clickedBtn:(UIButton *)btn {
     [self.lineView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(btn);
-        make.width.equalTo(btn).multipliedBy(0.618);
+        make.width.equalTo(btn).multipliedBy(_settings.lineScale);
         make.bottom.offset(0);
-        make.height.offset(2);
+        make.height.offset(self.settings.lineHeight);
     }];
     
     [UIView animateWithDuration:0.25 animations:^{
@@ -83,20 +85,23 @@
     if ( [self.delegate respondsToSelector:@selector(scrollEntriesView:currentIndex:beforeIndex:)] ) {
         [self.delegate scrollEntriesView:self currentIndex:btn.tag beforeIndex:self.beforeIndex];
     }
+    
+    self.itemArr[self.beforeIndex].selected = NO;
+    btn.selected = YES;
     self.beforeIndex = btn.tag;
 }
 
 // MARK: Private
 
 
-- (void)_addSuviewToScrollView:(NSArray<UIButton *> *)items {
+- (void)_addSubviewToScrollView:(NSArray<UIButton *> *)items {
     
     if ( 0 == items.count ) return;
     
     __block CGFloat summation = 0.0;
     [items enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [_scrollView addSubview:obj];
-        float width = [self sizeFortitle:self.items[idx].title size:CGSizeMake(100, 50)].width + 32;
+        float width = [self sizeFortitle:self.items[idx].title size:CGSizeMake(100, 44)].width + self.settings.itemSpacing;
         summation += width;
         if ( idx == 0 ) {
             [obj mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -115,21 +120,18 @@
         }
     }];
     
-    _scrollView.contentSize = CGSizeMake(summation, self.frame.size.height);
+    CGSize contentSize = _scrollView.contentSize;
+    contentSize.width = summation;
+    _scrollView.contentSize = contentSize;
     
-    [self.lineView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(items.firstObject);
-        make.width.equalTo(items.firstObject).multipliedBy(0.618);
-        make.bottom.offset(0);
-        make.height.offset(2);
-    }];
+    [self clickedBtn:items.firstObject];
 }
 
 - (CGSize)sizeFortitle:(NSString *)title size:(CGSize)size {
     CGSize result;
     if ( [title respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)] ) {
         NSMutableDictionary *attr = [NSMutableDictionary new];
-        attr[NSFontAttributeName] = [UIFont systemFontOfSize:14];
+        attr[NSFontAttributeName] = [UIFont systemFontOfSize:self.settings.fontSize];
         CGRect rect = [title boundingRectWithSize:size
                                           options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
                                        attributes:attr context:nil];
@@ -163,7 +165,9 @@
     btn.tag = index;
     [btn addTarget:self action:@selector(clickedBtn:) forControlEvents:UIControlEventTouchUpInside];
     [btn setTitle:title forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn setTitleColor:self.settings.normalColor forState:UIControlStateNormal];
+    [btn setTitleColor:self.settings.selectedColor forState:UIControlStateSelected];
+    btn.titleLabel.font = [UIFont systemFontOfSize:self.settings.fontSize];
     return btn;
 }
 
@@ -189,8 +193,15 @@
 - (UIView *)lineView {
     if ( _lineView ) return _lineView;
     _lineView = [UIView new];
-    _lineView.backgroundColor = [UIColor blackColor];
+    _lineView.backgroundColor = self.settings.lineColor;
     return _lineView;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    CGSize contentSize = _scrollView.contentSize;
+    contentSize.height = self.frame.size.height;
+    _scrollView.contentSize = contentSize;
 }
 
 @end

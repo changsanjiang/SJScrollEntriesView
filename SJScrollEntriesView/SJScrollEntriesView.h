@@ -10,6 +10,8 @@
 
 #import "SJScrollEntriesViewUserProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class SJScrollEntriesViewSettings;
 
 @protocol SJScrollEntriesViewDelegate;
@@ -18,13 +20,13 @@
 
 @property (nonatomic, strong, readwrite) NSArray<id<SJScrollEntriesViewUserProtocol>> *items;
 
-- (void)settings:(void(^)(SJScrollEntriesViewSettings *settings))block;
-
 - (void)changeIndex:(NSInteger)index;
 
 @property (nonatomic, weak) id <SJScrollEntriesViewDelegate> delegate;
 
 @property (nonatomic, strong, readonly) UIScrollView *scrollView;
+
+- (instancetype)initWithSettings:(SJScrollEntriesViewSettings *__nullable)settings;
 
 @end
 
@@ -38,12 +40,20 @@
 
 
 
-
 @interface SJScrollEntriesViewSettings : NSObject
 
 @property (nonatomic, assign) float fontSize;
 @property (nonatomic, strong) UIColor *selectedColor;
 @property (nonatomic, strong) UIColor *normalColor;
+
 @property (nonatomic, strong) UIColor *lineColor;
+@property (nonatomic, assign) float lineHeight;
+@property (nonatomic, assign) float lineScale;
+
+
+@property (nonatomic, assign) float itemSpacing;
 
 @end
+
+
+NS_ASSUME_NONNULL_END
