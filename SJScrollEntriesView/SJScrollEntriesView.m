@@ -8,7 +8,7 @@
 
 #import "SJScrollEntriesView.h"
 
-#import <Masonry.h>
+#import <Masonry/Masonry.h>
 
 @interface SJScrollEntriesView ()
 
