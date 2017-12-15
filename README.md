@@ -6,4 +6,4 @@
 ```
 
 ### Sample
-
+<img src="https://github.com/changsanjiang/SJScrollEntriesView/blob/master/SJScrollEntriesViewProject/SJScrollEntriesViewProject/ex.gif" />
