@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		776BF6371FE3BE0C0081CD9B /* SJScrollEntriesView.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 776BF6361FE3BE0C0081CD9B /* SJScrollEntriesView.podspec */; };
+		776BF6391FE3BE750081CD9B /* ex.gif in Resources */ = {isa = PBXBuildFile; fileRef = 776BF6381FE3BE750081CD9B /* ex.gif */; };
+		776BF63B1FE3BE860081CD9B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 776BF63A1FE3BE860081CD9B /* README.md */; };
 		77BED2AD1F5D7E750024D879 /* SampleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BED2AC1F5D7E750024D879 /* SampleModel.m */; };
 		77BED2B81F5E52A90024D879 /* SJScrollEntriesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BED2B61F5E52A90024D879 /* SJScrollEntriesView.m */; };
 		77F1E7A81F5D3E9000F26836 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F1E7A71F5D3E9000F26836 /* main.m */; };
@@ -22,6 +25,9 @@
 		0A86C180D940927FAAC9F8AD /* libPods-SJScrollEntriesViewProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SJScrollEntriesViewProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BAB702A40EAF7E350F0369B /* Pods-SJScrollEntriesViewProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SJScrollEntriesViewProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-SJScrollEntriesViewProject/Pods-SJScrollEntriesViewProject.release.xcconfig"; sourceTree = "<group>"; };
 		403411FD76CAC0DDB6C8BA27 /* Pods-SJScrollEntriesViewProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SJScrollEntriesViewProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SJScrollEntriesViewProject/Pods-SJScrollEntriesViewProject.debug.xcconfig"; sourceTree = "<group>"; };
+		776BF6361FE3BE0C0081CD9B /* SJScrollEntriesView.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SJScrollEntriesView.podspec; path = ../SJScrollEntriesView.podspec; sourceTree = "<group>"; };
+		776BF6381FE3BE750081CD9B /* ex.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ex.gif; sourceTree = "<group>"; };
+		776BF63A1FE3BE860081CD9B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		77BED2AB1F5D7E750024D879 /* SampleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleModel.h; sourceTree = "<group>"; };
 		77BED2AC1F5D7E750024D879 /* SampleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleModel.m; sourceTree = "<group>"; };
 		77BED2B51F5E52A90024D879 /* SJScrollEntriesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJScrollEntriesView.h; sourceTree = "<group>"; };
@@ -82,6 +88,8 @@
 		77F1E79A1F5D3E9000F26836 = {
 			isa = PBXGroup;
 			children = (
+				776BF6361FE3BE0C0081CD9B /* SJScrollEntriesView.podspec */,
+				776BF63A1FE3BE860081CD9B /* README.md */,
 				77F1E7A51F5D3E9000F26836 /* SJScrollEntriesViewProject */,
 				77F1E7A41F5D3E9000F26836 /* Products */,
 				319001B88A1357A4C8730E7B /* Pods */,
@@ -106,6 +114,7 @@
 				77F1E7AD1F5D3E9000F26836 /* ViewController.m */,
 				77BED2AB1F5D7E750024D879 /* SampleModel.h */,
 				77BED2AC1F5D7E750024D879 /* SampleModel.m */,
+				776BF6381FE3BE750081CD9B /* ex.gif */,
 				77BED2B41F5E52A90024D879 /* SJScrollEntriesView */,
 				77F1E7AF1F5D3E9000F26836 /* Main.storyboard */,
 				77F1E7B21F5D3E9000F26836 /* Assets.xcassets */,
@@ -186,6 +195,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				776BF63B1FE3BE860081CD9B /* README.md in Resources */,
+				776BF6391FE3BE750081CD9B /* ex.gif in Resources */,
+				776BF6371FE3BE0C0081CD9B /* SJScrollEntriesView.podspec in Resources */,
 				77F1E7B61F5D3E9000F26836 /* LaunchScreen.storyboard in Resources */,
 				77F1E7B31F5D3E9000F26836 /* Assets.xcassets in Resources */,
 				77F1E7B11F5D3E9000F26836 /* Main.storyboard in Resources */,

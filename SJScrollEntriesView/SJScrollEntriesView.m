@@ -34,6 +34,7 @@
     if ( settings == nil ) {
         settings = [SJScrollEntriesViewSettings new];
         settings.fontSize = 14;
+        settings.itemScale = 1.3;
         settings.selectedColor = [UIColor redColor];
         settings.normalColor = [UIColor blackColor];
         settings.lineColor = [UIColor redColor];
@@ -105,7 +106,7 @@
 - (void)currentBtnAnima:(UIButton *)btn {
     btn.titleLabel.font = [UIFont boldSystemFontOfSize:self.settings.fontSize];
     [UIView animateWithDuration:0.25 animations:^{
-        btn.transform = CGAffineTransformMakeScale(1.3, 1.3);
+        btn.transform = CGAffineTransformMakeScale(self.settings.itemScale, self.settings.itemScale);
     }];
 }
 
@@ -226,3 +227,4 @@
 
 
 @implementation SJScrollEntriesViewSettings @end
+
