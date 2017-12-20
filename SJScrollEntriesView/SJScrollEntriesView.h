@@ -57,6 +57,21 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) float lineScale;
 /// default is 32
 @property (nonatomic, assign) float itemSpacing;
+
+/*!
+ *  default is NO.
+ *
+ *  如果设置为 YES, 将会忽略 `itemSpacing`.
+ **/
+@property (nonatomic, assign, getter=isUnified) BOOL unified;
+
+/*!
+ *  default is Screen Width.
+ *
+ *  如果`unified`设置为`Yes`, 你需要设置他的最大宽度, 否则, `max width`将会采用默认的`屏幕的宽度`.
+ **/
+@property (nonatomic, assign) float maxWidth;
+
 @end
 
 

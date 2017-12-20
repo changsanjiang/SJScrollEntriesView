@@ -43,7 +43,19 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor blackColor];
-    
+
+//    SJScrollEntriesViewSettings *settings = [SJScrollEntriesViewSettings new];
+//    settings.fontSize = 14;
+//    settings.itemScale = 1.2;
+//    settings.selectedColor = [UIColor redColor];
+//    settings.normalColor = [UIColor blackColor];
+//    settings.lineColor = [UIColor redColor];
+//    settings.lineHeight = 2;
+////    settings.itemSpacing = 32;
+//    settings.lineScale = 0.382;
+//    settings.unified = YES;
+//    settings.maxWidth = [UIScreen mainScreen].bounds.size.width;
+
     _scrollEntriesView = [[SJScrollEntriesView alloc] initWithSettings:nil];
     
     _scrollEntriesView.backgroundColor = [UIColor whiteColor];
@@ -61,7 +73,7 @@
     
 #pragma mark - Items
     NSMutableArray <SampleModel *> *itemsM = [NSMutableArray new];
-    for ( int i = 0 ; i < 20; i ++ ) {
+    for ( int i = 0 ; i < 5; i ++ ) {
         SampleModel *model = [SampleModel modelWithTitle:[NSString stringWithFormat:@"%zd", arc4random() % 1000]];
         [itemsM addObject:model];
     }

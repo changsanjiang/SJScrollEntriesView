@@ -41,6 +41,7 @@
         settings.lineHeight = 2;
         settings.itemSpacing = 32;
         settings.lineScale = 0.382;
+        settings.unified = NO;
     }
     self.settings = settings;
     [self _setupView];
@@ -59,7 +60,7 @@
     
     [self _reset];
     
-    _itemArr = [self _createitems];
+    _itemArr = [self _createItems];
     
     [self _addSubviewToScrollView:_itemArr];
 }
@@ -118,9 +119,16 @@
     if ( 0 == items.count ) return;
     
     __block CGFloat summation = 0.0;
+    CGFloat unifiedWidth = _settings.maxWidth / items.count;
     [items enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [_scrollView addSubview:obj];
-        float width = [self sizeFortitle:self.items[idx].title size:CGSizeMake(100, 44)].width + self.settings.itemSpacing;
+        float width = 0;
+        if ( !_settings.unified ) {
+            width = [self sizeForTitle:self.items[idx].title size:CGSizeMake(100, 44)].width + self.settings.itemSpacing;
+        }
+        else {
+            width = unifiedWidth;
+        }
         summation += width;
         if ( idx == 0 ) {
             [obj mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -142,11 +150,10 @@
     CGSize contentSize = _scrollView.contentSize;
     contentSize.width = summation;
     _scrollView.contentSize = contentSize;
-    
     [self clickedBtn:items.firstObject];
 }
 
-- (CGSize)sizeFortitle:(NSString *)title size:(CGSize)size {
+- (CGSize)sizeForTitle:(NSString *)title size:(CGSize)size {
     CGSize result;
     if ( [title respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)] ) {
         NSMutableDictionary *attr = [NSMutableDictionary new];
@@ -164,7 +171,7 @@
     return result;
 }
 
-- (NSArray<UIButton *> *)_createitems {
+- (NSArray<UIButton *> *)_createItems {
     NSMutableArray<UIButton *> *itemsM = [NSMutableArray new];
     [self.items enumerateObjectsUsingBlock:^(id<SJScrollEntriesViewUserProtocol>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         itemsM[idx] = [self _createButtonWithTitle:obj.title index:idx];
@@ -226,5 +233,10 @@
 @end
 
 
-@implementation SJScrollEntriesViewSettings @end
+@implementation SJScrollEntriesViewSettings
+- (float)maxWidth {
+    if ( 0 == _maxWidth ) return [UIScreen mainScreen].bounds.size.width;
+    else return _maxWidth;
+}
+@end
 
