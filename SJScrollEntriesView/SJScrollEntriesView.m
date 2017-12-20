@@ -21,6 +21,8 @@
 
 @property (nonatomic, assign, readwrite) NSInteger beforeIndex;
 
+@property (nonatomic, assign, readwrite) BOOL outChanged;
+
 @end
 
 @implementation SJScrollEntriesView
@@ -51,7 +53,9 @@
     if ( _items.count == 0 ) return;
     if ( index > self.itemArr.count ) return;
     if ( index < 0 ) return;
+    _outChanged = YES;
     [self clickedBtn:self.itemArr[index]];
+    _outChanged = NO;
 }
 
 - (void)setItems:(NSArray<id<SJScrollEntriesViewUserProtocol>> *)items {
@@ -67,23 +71,16 @@
 // MARK: Actions
 
 - (void)clickedBtn:(UIButton *)btn {
-    [self.lineView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(btn);
-        make.width.equalTo(btn).multipliedBy(_settings.lineScale);
-        make.bottom.offset(0);
-        make.height.offset(self.settings.lineHeight);
-    }];
     
-    [UIView animateWithDuration:0.25 animations:^{
-        [self layoutIfNeeded];
-    }];
+    [self _updateLineLocationWithBtn:btn];
     
     CGFloat half = CGRectGetWidth(self.frame) * 0.5;
     CGFloat offsetX = btn.center.x - half;
     if ( offsetX > _scrollView.contentSize.width - CGRectGetWidth(self.frame) ) offsetX = _scrollView.contentSize.width - CGRectGetWidth(self.frame);
     if ( offsetX < 0 ) offsetX = 0;
     [self.scrollView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
-    if ( [self.delegate respondsToSelector:@selector(scrollEntriesView:currentIndex:beforeIndex:)] ) {
+    
+    if ( !_outChanged && [self.delegate respondsToSelector:@selector(scrollEntriesView:currentIndex:beforeIndex:)] ) {
         [self.delegate scrollEntriesView:self currentIndex:btn.tag beforeIndex:self.beforeIndex];
     }
     
@@ -94,6 +91,19 @@
     [self currentBtnAnima:btn];
     
     self.beforeIndex = btn.tag;
+}
+
+- (void)_updateLineLocationWithBtn:(UIButton *)btn {
+    [self.lineView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(btn);
+        make.width.equalTo(btn).multipliedBy(_settings.lineScale);
+        make.bottom.offset(0);
+        make.height.offset(self.settings.lineHeight);
+    }];
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        [self layoutIfNeeded];
+    }];
 }
 
 - (void)beforeBtnAnima:(UIButton *)btn {
@@ -123,7 +133,7 @@
     [_items enumerateObjectsUsingBlock:^(id<SJScrollEntriesViewUserProtocol>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CGFloat width = [self sizeForTitle:obj.title size:CGSizeMake(CGFLOAT_MAX, 44)].width + _settings.itemSpacing;
         realMaxWidth += width;
-       [itemsWidthM addObject:@(width)];
+        [itemsWidthM addObject:@(width)];
     }];
     
     if ( realMaxWidth < _settings.scrollViewMaxWidth ) {
