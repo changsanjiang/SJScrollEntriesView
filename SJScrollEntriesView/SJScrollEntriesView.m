@@ -34,14 +34,13 @@
     if ( settings == nil ) {
         settings = [SJScrollEntriesViewSettings new];
         settings.fontSize = 14;
-        settings.itemScale = 1.3;
+        settings.itemScale = 1.2;
         settings.selectedColor = [UIColor redColor];
         settings.normalColor = [UIColor blackColor];
         settings.lineColor = [UIColor redColor];
         settings.lineHeight = 2;
         settings.itemSpacing = 32;
         settings.lineScale = 0.382;
-        settings.unified = NO;
     }
     self.settings = settings;
     [self _setupView];
@@ -118,18 +117,28 @@
     
     if ( 0 == items.count ) return;
     
-    __block CGFloat summation = 0.0;
-    CGFloat unifiedWidth = _settings.maxWidth / items.count;
+    // calculate width
+    __block CGFloat realMaxWidth = 0;
+    NSMutableArray<NSNumber *> *itemsWidthM = [NSMutableArray array];
+    [_items enumerateObjectsUsingBlock:^(id<SJScrollEntriesViewUserProtocol>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGFloat width = [self sizeForTitle:obj.title size:CGSizeMake(CGFLOAT_MAX, 44)].width + _settings.itemSpacing;
+        realMaxWidth += width;
+       [itemsWidthM addObject:@(width)];
+    }];
+    
+    if ( realMaxWidth < _settings.scrollViewMaxWidth ) {
+        [itemsWidthM removeAllObjects];
+        CGFloat width = _settings.scrollViewMaxWidth / _items.count;
+        realMaxWidth = _items.count * width;
+        [_items enumerateObjectsUsingBlock:^(id<SJScrollEntriesViewUserProtocol>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [itemsWidthM addObject:@(width)];
+        }];
+    }
+    
+    // constraints
     [items enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [_scrollView addSubview:obj];
-        float width = 0;
-        if ( !_settings.unified ) {
-            width = [self sizeForTitle:self.items[idx].title size:CGSizeMake(100, 44)].width + self.settings.itemSpacing;
-        }
-        else {
-            width = unifiedWidth;
-        }
-        summation += width;
+        CGFloat width = [itemsWidthM[idx] floatValue];
         if ( idx == 0 ) {
             [obj mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.leading.offset(0);
@@ -147,8 +156,9 @@
         }
     }];
     
+    // set content width
     CGSize contentSize = _scrollView.contentSize;
-    contentSize.width = summation;
+    contentSize.width = realMaxWidth;
     _scrollView.contentSize = contentSize;
     [self clickedBtn:items.firstObject];
 }
@@ -234,9 +244,9 @@
 
 
 @implementation SJScrollEntriesViewSettings
-- (float)maxWidth {
-    if ( 0 == _maxWidth ) return [UIScreen mainScreen].bounds.size.width;
-    else return _maxWidth;
+- (float)scrollViewMaxWidth {
+    if ( 0 == _scrollViewMaxWidth ) return [UIScreen mainScreen].bounds.size.width;
+    else return _scrollViewMaxWidth;
 }
 @end
 

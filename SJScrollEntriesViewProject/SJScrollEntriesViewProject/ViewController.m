@@ -53,7 +53,6 @@
 //    settings.lineHeight = 2;
 ////    settings.itemSpacing = 32;
 //    settings.lineScale = 0.382;
-//    settings.unified = YES;
 //    settings.maxWidth = [UIScreen mainScreen].bounds.size.width;
 
     _scrollEntriesView = [[SJScrollEntriesView alloc] initWithSettings:nil];

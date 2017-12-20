@@ -59,18 +59,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) float itemSpacing;
 
 /*!
- *  default is NO.
- *
- *  如果设置为 YES, 将会忽略 `itemSpacing`.
- **/
-@property (nonatomic, assign, getter=isUnified) BOOL unified;
-
-/*!
  *  default is Screen Width.
- *
- *  如果`unified`设置为`Yes`, 你需要设置他的最大宽度, 否则, `max width`将会采用默认的`屏幕的宽度`.
+ *  如果 所有item的宽度+itemSpacing, 达不到最大宽度时, 将会平均分布.
  **/
-@property (nonatomic, assign) float maxWidth;
+@property (nonatomic, assign) float scrollViewMaxWidth;
 
 @end
 
