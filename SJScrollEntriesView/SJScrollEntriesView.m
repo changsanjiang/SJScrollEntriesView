@@ -23,6 +23,8 @@
 
 @property (nonatomic, assign, readwrite) BOOL outChanged;
 
+@property (nonatomic, assign) NSInteger currentIndex;
+
 @end
 
 @implementation SJScrollEntriesView
@@ -104,6 +106,8 @@
     [UIView animateWithDuration:0.25 animations:^{
         [self layoutIfNeeded];
     }];
+    
+    _currentIndex = btn.tag;
 }
 
 - (void)beforeBtnAnima:(UIButton *)btn {

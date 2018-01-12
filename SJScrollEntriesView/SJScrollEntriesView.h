@@ -18,17 +18,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SJScrollEntriesView : UIView
 
-@property (nonatomic, strong, readwrite) NSArray<id<SJScrollEntriesViewUserProtocol>> *items;
+- (instancetype)initWithSettings:(SJScrollEntriesViewSettings *__nullable)settings;
 
+@property (nonatomic, assign, readonly) NSInteger currentIndex;
 - (void)changeIndex:(NSInteger)index;
 
-@property (nonatomic, weak) id <SJScrollEntriesViewDelegate> delegate;
+@property (nonatomic, strong, readwrite) NSArray<id<SJScrollEntriesViewUserProtocol>> *items;
+
+@property (nonatomic, weak, readwrite) id <SJScrollEntriesViewDelegate> delegate;
 
 @property (nonatomic, strong, readonly) UIScrollView *scrollView;
 
-- (instancetype)initWithSettings:(SJScrollEntriesViewSettings *__nullable)settings;
-
 @end
+
 
 @protocol SJScrollEntriesViewDelegate <NSObject>
 
