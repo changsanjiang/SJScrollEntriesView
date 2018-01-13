@@ -51,6 +51,10 @@
     return self;
 }
 
+- (CGSize)intrinsicContentSize {
+    return CGSizeMake(self.settings.scrollViewMaxWidth, 44);
+}
+
 - (void)changeIndex:(NSInteger)index {
     if ( _items.count == 0 ) return;
     if ( index > self.itemArr.count ) return;
