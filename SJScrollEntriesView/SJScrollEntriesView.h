@@ -29,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) UIScrollView *scrollView;
 
+@property (nonatomic, strong, readonly) NSArray<UIButton *> *itemArr;
+
 @end
 
 
@@ -43,6 +45,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @interface SJScrollEntriesViewSettings : NSObject
+
++ (instancetype)defaultSettings;
+
 /// default is 14
 @property (nonatomic, assign) float fontSize;
 /// default is redColor

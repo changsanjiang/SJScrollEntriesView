@@ -35,17 +35,7 @@
 - (instancetype)initWithSettings:(SJScrollEntriesViewSettings *)settings {
     self = [super initWithFrame:CGRectZero];
     if ( !self ) return nil;
-    if ( settings == nil ) {
-        settings = [SJScrollEntriesViewSettings new];
-        settings.fontSize = 14;
-        settings.itemScale = 1.2;
-        settings.selectedColor = [UIColor redColor];
-        settings.normalColor = [UIColor blackColor];
-        settings.lineColor = [UIColor redColor];
-        settings.lineHeight = 2;
-        settings.itemSpacing = 32;
-        settings.lineScale = 0.382;
-    }
+    if ( settings == nil ) settings = [SJScrollEntriesViewSettings defaultSettings];
     self.settings = settings;
     [self _setupView];
     return self;
@@ -262,6 +252,20 @@
 
 
 @implementation SJScrollEntriesViewSettings
+
++ (instancetype)defaultSettings {
+    SJScrollEntriesViewSettings *settings = [SJScrollEntriesViewSettings new];
+    settings.fontSize = 14;
+    settings.itemScale = 1.2;
+    settings.selectedColor = [UIColor redColor];
+    settings.normalColor = [UIColor blackColor];
+    settings.lineColor = [UIColor redColor];
+    settings.lineHeight = 2;
+    settings.itemSpacing = 32;
+    settings.lineScale = 0.382;
+    return settings;
+}
+
 - (float)scrollViewMaxWidth {
     if ( 0 == _scrollViewMaxWidth ) return [UIScreen mainScreen].bounds.size.width;
     else return _scrollViewMaxWidth;
