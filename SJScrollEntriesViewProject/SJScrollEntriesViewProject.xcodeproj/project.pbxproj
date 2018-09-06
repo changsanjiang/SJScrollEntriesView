@@ -18,6 +18,7 @@
 		77F1E7B11F5D3E9000F26836 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77F1E7AF1F5D3E9000F26836 /* Main.storyboard */; };
 		77F1E7B31F5D3E9000F26836 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77F1E7B21F5D3E9000F26836 /* Assets.xcassets */; };
 		77F1E7B61F5D3E9000F26836 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77F1E7B41F5D3E9000F26836 /* LaunchScreen.storyboard */; };
+		77F6F2482140F39200A0A1B0 /* LWZItemsScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F6F2472140F39200A0A1B0 /* LWZItemsScrollView.m */; };
 		B0FFA363F882462B7F50E2D0 /* libPods-SJScrollEntriesViewProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A86C180D940927FAAC9F8AD /* libPods-SJScrollEntriesViewProject.a */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,8 @@
 		77F1E7B21F5D3E9000F26836 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77F1E7B51F5D3E9000F26836 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77F1E7B71F5D3E9000F26836 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77F6F2462140F39200A0A1B0 /* LWZItemsScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LWZItemsScrollView.h; sourceTree = "<group>"; };
+		77F6F2472140F39200A0A1B0 /* LWZItemsScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LWZItemsScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,8 @@
 				77F1E7AA1F5D3E9000F26836 /* AppDelegate.m */,
 				77F1E7AC1F5D3E9000F26836 /* ViewController.h */,
 				77F1E7AD1F5D3E9000F26836 /* ViewController.m */,
+				77F6F2462140F39200A0A1B0 /* LWZItemsScrollView.h */,
+				77F6F2472140F39200A0A1B0 /* LWZItemsScrollView.m */,
 				77BED2AB1F5D7E750024D879 /* SampleModel.h */,
 				77BED2AC1F5D7E750024D879 /* SampleModel.m */,
 				776BF6381FE3BE750081CD9B /* ex.gif */,
@@ -261,6 +266,7 @@
 			files = (
 				77BED2AD1F5D7E750024D879 /* SampleModel.m in Sources */,
 				77F1E7AE1F5D3E9000F26836 /* ViewController.m in Sources */,
+				77F6F2482140F39200A0A1B0 /* LWZItemsScrollView.m in Sources */,
 				77F1E7AB1F5D3E9000F26836 /* AppDelegate.m in Sources */,
 				77F1E7A81F5D3E9000F26836 /* main.m in Sources */,
 				77BED2B81F5E52A90024D879 /* SJScrollEntriesView.m in Sources */,
